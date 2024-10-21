@@ -106,6 +106,14 @@
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
         }
 
+        #timer {
+            font-size: 3rem;
+            margin: 1.5rem 0;
+            display: none;
+            color: var(--primary-color);
+            font-weight: 300;
+        }
+
         #message {
             font-size: 1.25rem;
             margin-top: 1.5rem;
@@ -267,6 +275,45 @@
             cursor: pointer;
         }
 
+        #certificate {
+            font-family: 'Dancing Script', cursive;
+            background-color: #f9f6e7;
+            border: 10px solid #d4af37;
+            padding: 2rem;
+            margin: 1rem 0;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        #certificate h1 {
+            color: #d4af37;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        #certificate p {
+            font-size: 1.25rem;
+            margin: 0.5rem 0;
+            color: var(--text-color);
+        }
+
+        #downloadBtn {
+            background-color: #d4af37;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        #downloadBtn:hover {
+            background-color: #c49b30;
+        }
+
         #securityModal {
             display: flex;
             position: fixed;
@@ -335,6 +382,20 @@
 
         #submitPassword:hover {
             background-color: #45b7aa;
+        }
+
+        #backgroundVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1000;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease;
         }
 
         #warningModal {
@@ -412,118 +473,6 @@
             background-color: #f0f0f0;
         }
 
-        #nightSky {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, #000428, #004e92);
-            opacity: 0;
-            transition: opacity 2s ease;
-            z-index: -1;
-        }
-
-        .star {
-            position: absolute;
-            background-color: #fff;
-            border-radius: 50%;
-            animation: twinkle 2s infinite;
-        }
-
-        @keyframes twinkle {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        .aurora {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 2s ease;
-            pointer-events: none;
-        }
-
-        .aurora-beam {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 200%;
-            background: linear-gradient(to bottom, 
-                rgba(0, 255, 0, 0) 0%,
-                rgba(0, 255, 0, 0.3) 50%,
-                rgba(0, 255, 0, 0) 100%);
-            transform-origin: 50% 0;
-            animation: aurora-wave 10s infinite linear;
-        }
-
-        @keyframes aurora-wave {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .firework {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            animation: explode 1s ease-out forwards;
-        }
-
-        @keyframes explode {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(30);
-                opacity: 0;
-            }
-        }
-
-        #finalModal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.8);
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        #finalModal.show {
-            opacity: 1;
-        }
-
-        #finalContent {
-            background-color: #fefefe;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-            transform: scale(0.7);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        #finalModal.show #finalContent {
-            transform: scale(1);
-            opacity: 1;
-        }
-
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -538,7 +487,19 @@
                 font-size: 0.9rem;
             }
 
+            #timer {
+                font-size: 2.5rem;
+            }
+
             #message {
+                font-size: 1rem;
+            }
+
+            #certificate h1 {
+                font-size: 2rem;
+            }
+
+            #certificate p {
                 font-size: 1rem;
             }
         }
@@ -557,6 +518,10 @@
                 font-size: 0.8rem;
             }
 
+            #timer {
+                font-size: 2rem;
+            }
+
             #message {
                 font-size: 0.9rem;
             }
@@ -566,6 +531,14 @@
             }
 
             .paper-note button {
+                font-size: 0.9rem;
+            }
+
+            #certificate h1 {
+                font-size: 1.5rem;
+            }
+
+            #certificate p {
                 font-size: 0.9rem;
             }
         }
@@ -587,12 +560,29 @@
                 <button id="yesBtn">Yes</button>
                 <button id="noBtn">No</button>
             </div>
+            <div id="timer"></div>
             <div id="message"></div>
             <div class="paper-note" id="paperNote">
                 <input type="text" id="yourName" placeholder="Your Name" required>
                 <input type="text" id="senderName" placeholder="Name of person who sent this" required>
                 <button id="nextBtn">Next</button>
             </div>
+        </div>
+    </div>
+
+    <div id="certificateModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="certificate">
+                <h1>Certificate of Love</h1>
+                <p>This certifies that</p>
+                <p id="name1"></p>
+                <p>and</p>
+                <p id="name2"></p>
+                <p>are united in love</p>
+                <p>on this day <span id="date"></span></p>
+            </div>
+            <button id="downloadBtn">Download Certificate</button>
         </div>
     </div>
 
@@ -604,41 +594,37 @@
         </div>
     </div>
 
-    <div id="nightSky"></div>
-    <div class="aurora">
-        <div class="aurora-beam"></div>
-        <div class="aurora-beam" style="animation-delay: -3s;"></div>
-        <div class="aurora-beam" style="animation-delay: -6s;"></div>
-    </div>
-
-    <div id="finalModal">
-        <div id="finalContent">
-            <h2>So tayo na?</h2>
-            <button id="finalYesBtn">Yes</button>
-        </div>
-    </div>
+    <video id="backgroundVideo" autoplay loop muted>
+        <source src="DILAW.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
     <audio id="backgroundMusic">
         <source src="dilaw.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
+        const timer = document.getElementById('timer');
         const message = document.getElementById('message');
         const paperNote = document.getElementById('paperNote');
         const nextBtn = document.getElementById('nextBtn');
+        const modal = document.getElementById('certificateModal');
+        const closeBtn = document.getElementsByClassName('close')[0];
+        const downloadBtn = document.getElementById('downloadBtn');
         const securityModal = document.getElementById('securityModal');
         const passwordInput = document.getElementById('passwordInput');
         const submitPassword = document.getElementById('submitPassword');
+        const backgroundVideo = document.getElementById('backgroundVideo');
         const backgroundMusic = document.getElementById('backgroundMusic');
         const warningModal = document.getElementById('warningModal');
         const closeWarning = document.getElementById('closeWarning');
-        const nightSky = document.getElementById('nightSky');
-        const aurora = document.querySelector('.aurora');
-        const finalModal = document.getElementById('finalModal');
-        const finalYesBtn = document.getElementById('finalYesBtn');
+        let countdown;
+        let audioContext;
+        let oscillator;
 
         function showModal(modalElement) {
             modalElement.style.display = 'flex';
@@ -668,6 +654,10 @@
             yesBtn.style.display = 'none';
             noBtn.style.display = 'none';
             paperNote.style.display = 'block';
+            backgroundVideo.style.display = 'block';
+            setTimeout(() => {
+                backgroundVideo.style.opacity = 0.3;
+            }, 10);
             playBackgroundMusic();
         });
 
@@ -681,15 +671,68 @@
             const yourName = document.getElementById('yourName').value;
             const senderName = document.getElementById('senderName').value;
             if (yourName && senderName) {
-                paperNote.style.display = 'none';
-                showNightSky();
-                setTimeout(() => {
-                    showModal(finalModal);
-                }, 5000);
+                document.getElementById('name1').textContent = yourName;
+                document.getElementById('name2').textContent = senderName;
+                document.getElementById('date').textContent = new Date().toLocaleDateString();
+                showModal(modal);
             } else {
                 alert('Please enter both names.');
             }
         });
+
+        closeBtn.onclick = function() {
+            hideModal(modal);
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                hideModal(modal);
+            }
+        }
+
+        downloadBtn.addEventListener('click', () => {
+            html2canvas(document.getElementById('certificate')).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'love_certificate.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        });
+
+        function startTimer(duration) {
+            let time = duration;
+            countdown = setInterval(() => {
+                timer.textContent = time;
+                timer.style.animation = 'pulse 0.5s';
+                setTimeout(() => {
+                    timer.style.animation = 'none';
+                }, 500);
+                if (time <= 0) {
+                    clearInterval(countdown);
+                    stopBeepSound();
+                    message.style.animation = 'none';
+                    void message.offsetWidth; // Trigger reflow
+                    message.style.animation = 'fadeInUp 0.5s ease-out forwards';
+                    message.textContent = 'Joke lang love kita kaya sige dun ka na sa kanya';
+                }
+                time--;
+            }, 1000);
+        }
+
+        function startBeepSound() {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            oscillator = audioContext.createOscillator();
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(440, audioContext.currentTime);
+            oscillator.connect(audioContext.destination);
+            oscillator.start();
+        }
+
+        function stopBeepSound() {
+            if (oscillator) {
+                oscillator.stop();
+            }
+        }
 
         noBtn.addEventListener('click', () => {
             showModal(warningModal);
@@ -698,48 +741,6 @@
         closeWarning.addEventListener('click', () => {
             hideModal(warningModal);
         });
-
-        function showNightSky() {
-            nightSky.style.opacity = 1;
-            aurora.style.opacity = 1;
-            createStars();
-        }
-
-        function createStars() {
-            for (let i = 0; i < 200; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                star.style.width = `${Math.random() * 3}px`;
-                star.style.height = star.style.width;
-                star.style.left = `${Math.random() * 100}%`;
-                star.style.top = `${Math.random() * 100}%`;
-                star.style.animationDelay = `${Math.random() * 2}s`;
-                nightSky.appendChild(star);
-            }
-        }
-
-        finalYesBtn.addEventListener('click', () => {
-            hideModal(finalModal);
-            message.style.display = 'block';
-            message.textContent = "Yes ang swerte mo talaga sakin";
-            createFireworks();
-        });
-
-        function createFireworks() {
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => {
-                    const firework = document.createElement('div');
-                    firework.classList.add('firework');
-                    firework.style.left = `${Math.random() * 100}%`;
-                    firework.style.top = `${Math.random() * 100}%`;
-                    firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                    document.body.appendChild(firework);
-                    setTimeout(() => {
-                        firework.remove();
-                    }, 1000);
-                }, i * 100);
-            }
-        }
 
         // Add smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
